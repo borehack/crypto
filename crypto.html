@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Crypto</title>
+    <script src="crypto.js"></script>
+</head>
+<body>
+
+
+<h1>Encrypt</h1>
+<input type="text" id="in" value="1234123412341234" />
+<button id="encrypt">Encrypt</button>
+
+<p>&nbsp;</p>
+<div id="out">
+
+</div>
+
+<script type="text/javascript">
+
+let encryptButton = document.getElementById("encrypt");
+let inData = document.getElementById("in");
+let out = document.getElementById("out");
+
+encryptButton.addEventListener("click", async () => {
+    let data = inData.value;
+
+    let encrypted1 = await encryptData("SHA-1", data);
+    let encrypted2 = await encryptData("SHA-256", data);
+
+    out.innerHTML  = "SHA-1:<br>";
+    out.innerHTML += toHexString(new Int8Array(encrypted1)) + "<br><br>";
+    out.innerHTML += "SHA-256:<br>";
+    out.innerHTML += toHexString(new Int8Array(encrypted2)) + "<br>";
+
+});
+</script>
+</body>
+</html>
